@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 17th Birthday Turjo!</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #10051f, #241044, #080817);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.tag {
+    color: #e8baff;
+    letter-spacing: 3px;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 10vw, 85px);
+    background: linear-gradient(90deg, #fff, #e4aaff, #ffb8d9);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 5px #d58aff); }
+    to { filter: drop-shadow(0 0 25px #d58aff); }
+}
+
+.age {
+    font-size: 22px;
+    color: #ffd1ec;
+    margin: 15px 0;
+}
+
+.cake {
+    font-size: 90px;
+    margin: 15px 0;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    50% { transform: translateY(-12px); }
+}
+
+.card {
+    max-width: 600px;
+    width: 100%;
+    padding: 30px 25px;
+    margin: 20px 0;
+    border: 1px solid #a96bce;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px rgba(190,100,255,0.15);
+}
+
+.card h2 {
+    color: #f4baff;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 14px;
+    line-height: 2;
+    color: #eee1f5;
+}
+
+.message {
+    margin-top: 15px;
+    color: #ffb5dc !important;
+    font-weight: 700;
+}
+
+.treat {
+    margin-top: 20px;
+    padding: 18px;
+    border: 1px dashed #ff9ed3;
+    border-radius: 15px;
+    background: rgba(255, 105, 180, 0.12);
+    color: #ffb6df;
+    font-weight: 800;
+    font-size: 18px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    50% { transform: scale(1.03); }
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #c77dff, #ff8acb);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 20px #c77dff70;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+#surprise {
+    display: none;
+    max-width: 450px;
+    width: 100%;
+    margin-top: 25px;
+    padding: 25px;
+    border: 1px solid #ff9ed3;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.08);
+    animation: appear 0.8s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(30px) scale(.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.monkey {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 20px;
+    border: 3px solid #ff9ed3;
+    margin-top: 20px;
+    box-shadow: 0 0 25px #d58aff;
+}
+
+#surprise p {
+    color: #ffb6df;
+    line-height: 1.8;
+    margin-top: 15px;
+}
+
+footer {
+    margin-top: 35px;
+    color: #a99ab8;
+    font-size: 12px;
+}
+
+.balloon {
+    position: fixed;
+    bottom: -100px;
+    font-size: 35px;
+    animation: float 9s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes float {
+    to {
+        transform: translateY(-120vh) rotate(20deg);
+    }
+}
+
+canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@media(max-width: 480px) {
+    .card { padding: 22px 17px; }
+    .card p { font-size: 13px; }
+    .age { font-size: 18px; }
+    .cake { font-size: 75px; }
+    .treat { font-size: 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="container">
+
+    <div class="tag">✨ A SPECIAL DAY • A SPECIAL PERSON ✨</div>
+
+    <h1>Happy Birthday<br>Turjo!</h1>
+
+    <div class="age">🎉 OFFICIALLY 17 YEARS OLD 🎉</div>
+
+    <div class="cake">🎂</div>
+
+    <div class="card">
+        <h2>Dear Turjo ❤️</h2>
+
+        <p>
+            Today is not just another day. It's the day a legend was born! 🥳
+            <br><br>
+            Welcome to 17! May your life be filled with endless happiness,
+            unforgettable memories, incredible success and beautiful adventures.
+            <br><br>
+            Keep smiling, keep shining and never stop chasing your dreams.
+            May every new chapter of your life be even more amazing than the last.
+            <br><br>
+            You're one of a kind, and you deserve all the happiness in the world!
+        </p>
+
+        <p class="message">
+            Stay blessed, stay crazy and keep being YOU! 💜
+        </p>
+
+        <div class="treat">
+            ⚠️ TREAT NA DILE KHOBOR ASE! 😂🔥
+        </div>
+    </div>
+
+    <button onclick="showSurprise()">
+        🎁 OPEN YOUR SURPRISE
+    </button>
+
+    <div id="surprise">
+        <h2 style="color:#ffb6df;">🎊 SURPRISE! 🎊</h2>
+
+        <p>
+            17 years of awesomeness unlocked!
+            <br>
+            And here's your exclusive birthday gift... 💀
+        </p>
+
+        <!-- Weird Monkey Birthday Gift -->
+        <img
+            class="monkey"
+            src="https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?w=600"
+            alt="Funny monkey birthday gift"
+        >
+
+        <p style="font-size:18px; font-weight:800;">
+            BRO REALLY TURNED 17 BUT STILL LOOKS LIKE THIS 💀🐒
+        </p>
+
+        <p>
+            Anyway, Happy Birthday Turjo! ❤️
+            <br>
+            NOW GIVE US THE TREAT! 🍕😂
+        </p>
+    </div>
+
+    <footer>
+        Made with ❤️ & lots of wishes
+        <br>
+        HAPPY 17TH BIRTHDAY, TURJO!
+    </footer>
+
+</div>
+
+<script>
+// CONFETTI ANIMATION
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+let pieces = [];
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", resize);
+resize();
+
+function createConfetti() {
+    pieces = [];
+
+    for (let i = 0; i < 180; i++) {
+        pieces.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            size: Math.random() * 8 + 3,
+            speed: Math.random() * 3 + 2,
+            color: ["#ff8acb", "#d58aff", "#ffe66d",
+                    "#8affea", "#ffffff"][Math.floor(Math.random()*5)],
+            rotation: Math.random() * 360
+        });
+    }
+}
+
+function animateConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    pieces.forEach(p => {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+        ctx.restore();
+
+        p.y += p.speed;
+        p.rotation += 3;
+
+        if (p.y > canvas.height) {
+            p.y = -10;
+            p.x = Math.random() * canvas.width;
+        }
+    });
+
+    requestAnimationFrame(animateConfetti);
+}
+
+createConfetti();
+animateConfetti();
+
+// FLOATING BALLOONS
+const balloons = ["🎈", "🎈", "💜", "🎉"];
+
+function addBalloon() {
+    const balloon = document.createElement("div");
+    balloon.className = "balloon";
+    balloon.textContent = balloons[
+        Math.floor(Math.random() * balloons.length)
+    ];
+
+    balloon.style.left = Math.random() * 100 + "vw";
+    balloon.style.animationDuration = (7 + Math.random() * 6) + "s";
+
+    document.body.appendChild(balloon);
+
+    setTimeout(() => balloon.remove(), 13000);
+}
+
+setInterval(addBalloon, 1000);
+
+// OPEN SURPRISE
+function showSurprise() {
+    const surprise = document.getElementById("surprise");
+
+    surprise.style.display = "block";
+
+    // Celebrate again!
+    createConfetti();
+
+    // Scroll to monkey gift on mobile
+    surprise.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+</script>
+
+</body>
+</html>
